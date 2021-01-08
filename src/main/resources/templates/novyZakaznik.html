@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>autoservis</title>
+</head>
+<body>
+<!--/*@thymesVar id="zakaznik" type="bla"*/-->
+<form th:action="@{/novyZakaznik}" th:object="${zakaznik}" method="post">
+
+
+
+    <label for="number">Váš unikátny identifikátor: </label>
+    <input readonly type="number" id="number" th:field="*{idenetifikator}"/>
+    <br>
+
+    <label for="name">Meno*</label>
+
+    <input required    oninvalid="this.setCustomValidity('Meno nesmie byť prázdne.Zadaj znova')"
+           onchange="this.setCustomValidity('')" type="text" id="name" th:field="*{meno}"/>
+    <td th:if="${#fields.hasErrors('meno')}" th:errors="*{meno}">
+        Name Error</td>
+    <br>
+
+
+
+    <input type="submit" value="Ulož"/>
+</form>
+</body>
+</html>

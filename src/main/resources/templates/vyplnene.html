@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>autoservis</title>
+</head>
+<body>
+<p th:text="'ID: '+ ${zakaznik.idenetifikator}"></p>
+<p th:text="'Meno: '+${zakaznik.meno}"></p>
+<a th:href="@{'/'}">Návrat na zoznam používateľov</a></td><br>
+</body>
+</html>
