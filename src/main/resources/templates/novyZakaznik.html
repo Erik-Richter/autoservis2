@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>autoservis</title>
 </head>
+<style>
+    body{
+        background-color: #3c3f41;
+        color: snow;
+    }
+</style>
 <body>
 <!--/*@thymesVar id="zakaznik" type="bla"*/-->
 <form th:action="@{/novyZakaznik}" th:object="${zakaznik}" method="post">
