@@ -6,15 +6,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tabulkaZakaznikov")
+@NoArgsConstructor
+@Table(name = "tabulka_zakaznikov")
 public class Zakaznik {
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "idenetifikator")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idenetifikator;
     @Column(name = "meno")
     private String meno;

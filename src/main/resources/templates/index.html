@@ -24,6 +24,7 @@
     </thead>
     <tbody>
     <tr th:each="zakaznik: ${zakaznici}">
+        <!--/*@thymesVar id="idenetifikator" type="aj"*/-->
         <td th:text="${zakaznik.idenetifikator}"></td>
         <!--/*@thymesVar id="osobneUdaje" type="sk"*/-->
         <td th:text="${zakaznik.meno}"></td>

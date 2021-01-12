@@ -1,5 +1,8 @@
 package sk.stuba.fei.homeoffice.bp.demo;
 
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -12,14 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@Service
+@Component
+@Data
 public class ZakaznikController{
 
-    List<Zakaznik> zakaznici = new ArrayList<>();
+    @Autowired
+    private ZakaznikRepository zakaznikRepository;
+
+    public ZakaznikController(ZakaznikRepository zakaznikRepository) {
+        this.zakaznikRepository = zakaznikRepository;
+    }
 
     @GetMapping
     public String vypisVsetkychZakaznikov(Model model){
-        model.addAttribute("zakaznici", zakaznici);
+        model.addAttribute("zakaznici", zakaznikRepository.findAll());
         return "index";
     }
 
@@ -27,15 +36,14 @@ public class ZakaznikController{
     public String index(Model model) {
         Zakaznik zakaznik = new Zakaznik();
         model.addAttribute("zakaznik", zakaznik);
-        zakaznik.setIdenetifikator(zakaznici.size());
+
         return "novyZakaznik";
     }
 
     @PostMapping("/novyZakaznik")
     public String novyPouzivatel(@ModelAttribute @Valid Zakaznik zakaznik, Model model) {
 
-        model.addAttribute("zakaznik", zakaznik);
-        zakaznici.add(zakaznik);
+        this.zakaznikRepository.save(zakaznik);
         return "vyplnene";
     }
 }
