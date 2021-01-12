@@ -1,4 +1,4 @@
-package sk.stuba.fei.homeoffice.bp.demo;
+package sk.stuba.fei.homeoffice.bp.demo.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
