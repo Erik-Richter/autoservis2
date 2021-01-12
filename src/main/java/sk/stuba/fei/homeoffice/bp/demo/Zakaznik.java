@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tabulka_zakaznikov")
+@Table(name = "customers")
 public class Zakaznik {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,4 +19,6 @@ public class Zakaznik {
     private int idenetifikator;
     @Column(name = "meno")
     private String meno;
+    @Column(name = "priezvisko")
+    private String priezvisko;
 }
