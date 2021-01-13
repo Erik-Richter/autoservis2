@@ -20,6 +20,14 @@
     }
     th{
         color: #b5772f;
+        border: 1px solid snow;
+        padding 2px;
+        min-width: 25px;
+    }
+    td{
+        border: 1px solid snow;
+        padding: 2px;
+        min-width: 25px;
     }
 </style>
 <body>
@@ -31,6 +39,8 @@
         <th class="mdl-data-table__cell--non-numeric">Id</th>
         <th class="mdl-data-table__cell--non-numeric">Meno</th>
         <th class="mdl-data-table__cell--non-numeric">Priezvisko</th>
+        <th class="mdl-data-table__cell--non-numeric">Detaily</th>
+        <th class="mdl-data-table__cell--non-numeric">Úpravy</th>
     </tr>
     </thead>
     <tbody>
@@ -41,6 +51,8 @@
         <td th:text="${zakaznik.meno}"></td>
         <!--/*@thymesVar id="osobneUdaje" type="sk"*/-->
         <td th:text="${zakaznik.priezvisko}"></td>
+        <td><a th:href="@{'/detail/' + ${zakaznik.idenetifikator}}">Zobraziť Detaily</a></td>
+        <td><a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}">Upraviť Detaily</a></td>
     </tbody>
 </table>
 <a th:href="@{'/novyZakaznik'}">Pridaj</a><br>

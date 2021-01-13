@@ -4,9 +4,11 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import sk.stuba.fei.homeoffice.bp.demo.data.Zakaznik;
 import sk.stuba.fei.homeoffice.bp.demo.repository.ZakaznikRepository;
@@ -35,7 +37,6 @@ public class ZakaznikController{
     public String index(Model model) {
         Zakaznik zakaznik = new Zakaznik();
         model.addAttribute("zakaznik", zakaznik);
-
         return "novyZakaznik";
     }
 
@@ -44,5 +45,17 @@ public class ZakaznikController{
 
         this.zakaznikRepository.save(zakaznik);
         return "vyplnene";
+    }
+
+    @GetMapping("/detail/{idenetifikator}")
+    public String findZakaznikByIdenetifikator(@PathVariable Integer idenetifikator, Model model){
+        model.addAttribute("zakaznik", this.zakaznikRepository.findZakaznikByIdenetifikator(idenetifikator));
+        return "vyplnene";
+    }
+
+    @GetMapping("/zmenaUdajov/{idenetifikator}")
+    public String getZakaznikByIdenetifikator(@PathVariable Integer idenetifikator, Model model){
+        model.addAttribute("zakaznik", this.zakaznikRepository.getZakaznikByIdenetifikator(idenetifikator));
+        return "novyZakaznik";
     }
 }

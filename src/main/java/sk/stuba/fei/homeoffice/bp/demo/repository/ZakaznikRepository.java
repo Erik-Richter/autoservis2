@@ -6,4 +6,6 @@ import sk.stuba.fei.homeoffice.bp.demo.data.Zakaznik;
 
 @Repository
 public interface ZakaznikRepository extends JpaRepository<Zakaznik, Integer> {
+    Zakaznik findZakaznikByIdenetifikator(Integer idenetifikator);
+    Zakaznik getZakaznikByIdenetifikator(Integer idenetifikator);
 }
