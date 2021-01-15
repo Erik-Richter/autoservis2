@@ -30,33 +30,32 @@
     }
 </style>
 <body>
-<h1>Zoznam zákazníkov</h1>
+<h1>Zoznam vozidiel</h1>
 
 <table>
     <thead>
     <tr>
         <th class="mdl-data-table__cell--non-numeric">Id</th>
-        <th class="mdl-data-table__cell--non-numeric">Meno</th>
-        <th class="mdl-data-table__cell--non-numeric">Priezvisko</th>
+        <th class="mdl-data-table__cell--non-numeric">Značka</th>
+        <th class="mdl-data-table__cell--non-numeric">Model</th>
         <th class="mdl-data-table__cell--non-numeric">Detaily</th>
         <th class="mdl-data-table__cell--non-numeric">Úpravy</th>
         <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="zakaznik: ${zakaznici}">
+    <tr th:each="vozidlo: ${vozidla}">
         <!--/*@thymesVar id="idenetifikator" type="aj"*/-->
-        <td th:text="${zakaznik.idenetifikator}"></td>
-        <!--/*@thymesVar id="osobneUdaje" type="sk"*/-->
-        <td th:text="${zakaznik.meno}"></td>
-        <!--/*@thymesVar id="osobneUdaje" type="sk"*/-->
-        <td th:text="${zakaznik.priezvisko}"></td>
-        <td><a th:href="@{'/detail/' + ${zakaznik.idenetifikator}}">Zobraziť Detaily</a></td>
-        <td><a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}">Upraviť Detaily</a></td>
-        <td><a th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}">Odstrániť zákazníka</a></td>
+        <!--/*@thymesVar id="idVozidla" type="java"*/-->
+        <td th:text="${vozidlo.idVozidla}"></td>
+        <td th:text="${vozidlo.znackaVozidla}"></td>
+        <td th:text="${vozidlo.typVozidla}"></td>
+        <td><a th:href="@{'/zoznamVozidiel/detailVozidla/' + ${vozidlo.idVozidla}}">Zobraziť Detaily</a></td>
+        <td><a th:href="@{'/zoznamVozidiel/zmenaUdajovVozidla/' + ${vozidlo.idVozidla}}">Zmeniť Údaje</a></td>
+        <td><a th:href="@{'/zoznamVozidiel/odstranenieVozidla/' + ${vozidlo.idVozidla}}">Zmeniť Údaje</a></td>
     </tbody>
 </table>
-<a th:href="@{'/novyZakaznik'}">Pridaj</a><br>
-<a th:href="@{'/zoznamVozidiel'}">Zoznam vozidiel</a><br>
+<a th:href="@{'/'}">Zoznam zákazníkov</a><br>
+<a th:href="@{'/noveVozidlo'}">Registrácia vozidla</a><br>
 </body>
 </html>

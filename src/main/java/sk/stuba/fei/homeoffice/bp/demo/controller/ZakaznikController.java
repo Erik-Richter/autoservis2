@@ -4,7 +4,6 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +33,7 @@ public class ZakaznikController{
     }
 
     @GetMapping("/novyZakaznik")
-    public String index(Model model) {
+    public String registracia(Model model) {
         Zakaznik zakaznik = new Zakaznik();
         model.addAttribute("zakaznik", zakaznik);
         return "novyZakaznik";
@@ -58,4 +57,12 @@ public class ZakaznikController{
         model.addAttribute("zakaznik", this.zakaznikRepository.getZakaznikByIdenetifikator(idenetifikator));
         return "novyZakaznik";
     }
+
+    /*
+    @GetMapping("/zmazanieZakaznika/{idenetifikator}")
+    public String deleteByIdenetifikator(@PathVariable Integer idenetifikator, Model model){
+        model.addAttribute("zakaznik", this.zakaznikRepository.deleteByIdenetifikator(idenetifikator));
+        return "index";
+    }
+    */
 }
