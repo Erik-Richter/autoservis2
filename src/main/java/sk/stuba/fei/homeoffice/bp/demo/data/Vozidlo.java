@@ -17,8 +17,12 @@ public class Vozidlo {
     @Id
     @Column(name = "id_vozidla")
     private int idVozidla;
+    @Column(name = "id_majitela")
+    private int idMajitela;
     @Column(name = "znacka_vozidla")
     private String znackaVozidla;
     @Column(name = "typ_vozidla")
     private String typVozidla;
+    @Column(name = "vin_cislo")
+    private String vinCislo;
 }

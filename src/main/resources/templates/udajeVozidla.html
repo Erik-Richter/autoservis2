@@ -23,9 +23,10 @@
 <body>
 <h1>Vaše údaje</h1>
 <p th:text="'ID: '+ ${vozidlo.idVozidla}"></p>
+<p th:text="'Model: '+${vozidlo.idMajitela}"></p>
 <p th:text="'Značka: '+${vozidlo.znackaVozidla}"></p>
-<p th:text="'Model: '+${vozidlo.typVozidla}"></p>
-
+<p th:text="'Typ: '+${vozidlo.typVozidla}"></p>
+<p th:text="'VIN: '+${vozidlo.vinCislo}"></p>
 <a th:href="@{'/zoznamVozidiel'}">Návrat na zoznam vozidiel</a></td><br>
 </body>
 </html>
