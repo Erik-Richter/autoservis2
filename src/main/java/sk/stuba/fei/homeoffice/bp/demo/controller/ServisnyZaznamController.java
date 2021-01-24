@@ -58,4 +58,18 @@ public class ServisnyZaznamController {
         servisnyZaznamRepository.deleteById(idZaznamu);
         return "redirect:/zoznamServisnychZaznamov";
     }
+
+    @GetMapping("/novyServisnyZaznam/vozidlo/{idVozidla}")
+    public String novyServisnyZaznamVozidla(@PathVariable Integer idVozidla, Model model){
+        ServisnyZaznam servisnyZaznam = new ServisnyZaznam();
+        servisnyZaznam.setIdVozidla(idVozidla);
+        model.addAttribute("servisnyZaznam", servisnyZaznam);
+        return "novyServisnyZaznam";
+    }
+
+    @GetMapping("/servisnaKnizka/vozidlo/{idVozidla}")
+    public String zobrazenieServisnejKnizky(@PathVariable Integer idVozidla, Model model){
+        model.addAttribute("servisneZaznamy", servisnyZaznamRepository.findAllByIdVozidla(idVozidla));
+        return "zoznamServisnychZaznamov";
+    }
 }
