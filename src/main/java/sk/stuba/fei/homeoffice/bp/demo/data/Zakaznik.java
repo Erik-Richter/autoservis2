@@ -21,4 +21,24 @@ public class Zakaznik {
     private String meno;
     @Column(name = "priezvisko")
     private String priezvisko;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "rodne_cislo")
+    private String rodneCislo;
+    @Column(name = "ulica")
+    private String ulica;
+    @Column(name = "cislo_domu")
+    private String cisloDomu;
+    @Column(name = "obec")
+    private String obec;
+    private String psc;
+
+    public String getAdresa() {
+        String ulica = getUlica();
+        String cisloDomu = getCisloDomu();
+        String obec = getObec();
+        String psc = getPsc();
+
+        return ulica + " " + cisloDomu + ", " + obec + " " + psc;
+    }
 }

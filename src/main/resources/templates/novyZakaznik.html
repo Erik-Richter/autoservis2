@@ -43,6 +43,31 @@
     <input required oninvalid="this.setCustomValidity('Meno nesmie byť prázdne.Zadaj znova')" onchange="this.setCustomValidity('')" type="text" id="priezvisko" th:field="*{priezvisko}"/>
     <td th:if="${#fields.hasErrors('priezvisko')}" th:errors="*{priezvisko}">
         Name Error</td>
+    <br>
+
+    <label for="email">E-mail:</label>
+    <input type="text" id="email" th:field="*{email}"/>
+    <br>
+
+    <label for="rc">Rodné číslo:</label>
+    <input type="text" id="rc" th:field="*{rodneCislo}"/>
+    <br>
+
+    <h1>Adresa</h1>
+
+    <label for="ulica">Ulica:</label>
+    <input type="text" id="ulica" th:field="*{ulica}"/>
+
+
+    <label for="cd">Cilso domu:</label>
+    <input type="text" id="cd" th:field="*{cisloDomu}"/>
+
+    <label for="obec">Obec:</label>
+    <input type="text" id="obec" th:field="*{obec}"/>
+
+    <label for="psc">PSČ:</label>
+    <input type="text" id="psc" th:field="*{psc}"/>
+
 <div></div>
 
 
