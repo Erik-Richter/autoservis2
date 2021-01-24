@@ -56,7 +56,6 @@ public class VozidloController {
         return "noveVozidlo";
     }
 
-
     @GetMapping("/zoznamVozidiel/odstranenieVozidla/{idVozidla}")
     public String deleteVozidloById(@PathVariable Integer idVozidla){
         vozidloRepository.deleteById(idVozidla);

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>autoservis</title>
+</head>
+<style>
+    body{
+        background-color: #2b2b2b;
+        color: snow;
+    }
+    a{
+        text-decoration: none;
+        color: #8bc152;
+    }
+    h1{
+        color: #a2b429;
+    }
+    th{
+        color: #b5772f;
+    }
+</style>
+
+<body>
+<h1>Registrácia</h1>
+<!--/*@thymesVar id="zakaznik" type="bla"*/-->
+<form th:action="@{'/novyDiel'}" th:object="${diel}" method="post">
+
+    <label  for="idDielu">ID dielu</label>
+    <input readonly type="number" id="idDielu" th:field="*{idDielu}"/>
+    <br>
+
+    <label  for="nazov">Nazov</label>
+    <input type="text" id="nazov" th:field="*{nazov}"/>
+    <br>
+
+    <label  for="pocet">Počet</label>
+    <input type="number" id="pocet" th:field="*{pocet}"/>
+    <br>
+
+    <label  for="vyrobca">Výrobca</label>
+    <input type="text" id="vyrobca" th:field="*{vyrobca}"/>
+    <br>
+
+    <label  for="cp">Číslo produktu</label>
+    <input type="text" id="cp" th:field="*{cisloProduktu}"/>
+    <br>
+
+    <label  for="tc">Typové číslo</label>
+    <input type="text" id="tc" th:field="*{typoveCislo}"/>
+    <br>
+
+    <label  for="kategoria">Kategória</label>
+    <input type="text" id="kategoria" th:field="*{kategoria}"/>
+    <br>
+
+
+
+    <input type="submit" value="Ulož"/>
+</form>
+</body>
+</html>

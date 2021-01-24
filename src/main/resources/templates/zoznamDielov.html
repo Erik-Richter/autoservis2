@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>zakaznici</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<style>
+    body{
+        background-color: #2b2b2b;
+        color: snow;
+    }
+    a{
+        text-decoration: none;
+        color: #8bc152;
+    }
+    h1{
+        color: #a2b429;
+    }
+    th{
+        color: #b5772f;
+        border: 1px solid snow;
+        min-width: 25px;
+    }
+    td{
+        border: 1px solid snow;
+        padding: 2px;
+        min-width: 25px;
+    }
+</style>
+<body>
+<h1>Zoznam vozidiel</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">ID</th>
+        <th class="mdl-data-table__cell--non-numeric">Názov</th>
+        <th class="mdl-data-table__cell--non-numeric">Výrobca</th>
+        <th class="mdl-data-table__cell--non-numeric">Množstvo</th>
+        <th class="mdl-data-table__cell--non-numeric">Číslo produktu</th>
+        <th class="mdl-data-table__cell--non-numeric">Typové číslo</th>
+        <th class="mdl-data-table__cell--non-numeric">Detaily</th>
+        <th class="mdl-data-table__cell--non-numeric">Zmeny</th>
+        <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="diel: ${diely}">
+        <!--/*@thymesVar id="idenetifikator" type="aj"*/-->
+        <!--/*@thymesVar id="idVozidla" type="java"*/-->
+        <td th:text="${diel.idDielu}"></td>
+        <td th:text="${diel.nazov}"></td>
+        <td th:text="${diel.vyrobca}"></td>
+        <td th:text="${diel.pocet}"></td>
+        <td th:text="${diel.cisloProduktu}"></td>
+        <td th:text="${diel.typoveCislo}"></td>
+
+        <td><a th:href="@{'/zoznamDielov/diel/' + ${diel.idDielu}}">Zobraziť detaily</a></td>
+        <td><a th:href="@{'/zoznamDielov/zmenaUdajov/' + ${diel.idDielu}}">Zmeniť údaje</a></td>
+        <td><a th:href="@{'/zoznamDielov/odstranenieDielu/' + ${diel.idDielu}}">Odstrániť diely</a></td>
+    </tbody>
+</table>
+<a th:href="@{'/'}">Zoznam zákazníkov</a><br>
+<a th:href="@{'/noveVozidlo'}">Registrácia vozidla</a><br>
+</body>
+</html>
