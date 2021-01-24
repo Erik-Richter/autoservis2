@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>autoservis</title>
+</head>
+<style>
+    body{
+        background-color: #2b2b2b;
+        color: snow;
+    }
+    a{
+        text-decoration: none;
+        color: #8bc152;
+    }
+    h1{
+        color: #a2b429;
+    }
+    th{
+        color: #b5772f;
+    }
+</style>
+<body>
+<h1>Vaše údaje</h1>
+<p th:text="'ID: '+ ${servisnyZaznam.idZaznamu}"></p>
+<p th:text="'ID: '+ ${servisnyZaznam.idVozidla}"></p>
+<p th:text="'Model: '+${servisnyZaznam.nazovZaznamu}"></p>
+<p th:text="'Značka: '+${servisnyZaznam.datumServisu}"></p>
+<p th:text="'Typ: '+${servisnyZaznam.stavKilometrov}"></p>
+<p th:text="'VIN: '+${servisnyZaznam.poznamky}"></p>
+<a th:href="@{'/zoznamVozidiel'}">Návrat na zoznam vozidiel</a></td><br>
+</body>
+</html>

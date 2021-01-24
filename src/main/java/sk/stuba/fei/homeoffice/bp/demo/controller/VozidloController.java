@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import sk.stuba.fei.homeoffice.bp.demo.data.Vozidlo;
 import sk.stuba.fei.homeoffice.bp.demo.repository.VozidloRepository;
 
-import javax.validation.Valid;
 
 @Controller
 @Component

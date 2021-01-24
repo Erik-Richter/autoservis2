@@ -41,6 +41,9 @@
         <th class="mdl-data-table__cell--non-numeric">Detaily</th>
         <th class="mdl-data-table__cell--non-numeric">Úpravy</th>
         <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
+        <th class="mdl-data-table__cell--non-numeric">Servis</th>
+        <th class="mdl-data-table__cell--non-numeric">Servisná knižka</th>
+
     </tr>
     </thead>
     <tbody>
@@ -53,6 +56,8 @@
         <td><a th:href="@{'/zoznamVozidiel/detailVozidla/' + ${vozidlo.idVozidla}}">Zobraziť Detaily</a></td>
         <td><a th:href="@{'/zoznamVozidiel/zmenaUdajovVozidla/' + ${vozidlo.idVozidla}}">Zmeniť Údaje</a></td>
         <td><a th:href="@{'/zoznamVozidiel/odstranenieVozidla/' + ${vozidlo.idVozidla}}">Odstrániť vozidlo</a></td>
+        <td><a th:href="@{'/novyServisnyZaznam/vozidlo/' + ${vozidlo.idVozidla}}">Nový záznam</a></td>
+        <td><a th:href="@{'/servisnaKnizka/vozidlo/' + ${vozidlo.idVozidla}}">Zobraziť servisnú knižku</a></td>
     </tbody>
 </table>
 <a th:href="@{'/'}">Zoznam zákazníkov</a><br>

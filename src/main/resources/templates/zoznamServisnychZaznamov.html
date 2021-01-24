@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>zakaznici</title>
+
+
+</head>
+<style>
+    body{
+        background-color: #2b2b2b;
+        color: snow;
+    }
+    a{
+        text-decoration: none;
+        color: #8bc152;
+    }
+    h1{
+        color: #a2b429;
+    }
+    th{
+        color: #b5772f;
+        border: 1px solid snow;
+        min-width: 25px;
+    }
+    td{
+        border: 1px solid snow;
+        padding: 2px;
+        min-width: 25px;
+    }
+</style>
+<body>
+<h1>Zoznam vozidiel</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">Id</th>
+        <th class="mdl-data-table__cell--non-numeric">Id vozidla</th>
+        <th class="mdl-data-table__cell--non-numeric">Názov</th>
+        <th class="mdl-data-table__cell--non-numeric">Dátum servisu</th>
+        <th class="mdl-data-table__cell--non-numeric">Stav kilometrov</th>
+        <th class="mdl-data-table__cell--non-numeric">Poznámky</th>
+        <th class="mdl-data-table__cell--non-numeric">Detaily</th>
+        <th class="mdl-data-table__cell--non-numeric">Úpravy</th>
+        <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="servisnyZaznam: ${servisneZaznamy}">
+        <!--/*@thymesVar id="idenetifikator" type="aj"*/-->
+        <!--/*@thymesVar id="idVozidla" type="java"*/-->
+        <td th:text="${servisnyZaznam.idZaznamu}"></td>
+        <td th:text="${servisnyZaznam.idVozidla}"></td>
+        <td th:text="${servisnyZaznam.nazovZaznamu}"></td>
+        <td th:text="${servisnyZaznam.datumServisu}"></td>
+        <td th:text="${servisnyZaznam.stavKilometrov}"></td>
+        <td th:text="${servisnyZaznam.poznamky}"></td>
+        <td><a th:href="@{'/zoznamServisnychZaznamov/detail/' + ${servisnyZaznam.idZaznamu}}">Zobraziť Detaily</a></td>
+        <td><a th:href="@{'/zoznamServisnychZaznamov/zmenaUdajov/' + ${servisnyZaznam.idZaznamu}}">Zmeniť údaje</a></td>
+        <td><a th:href="@{'/zoznamServisnychZaznamov/zmazanie/' + ${servisnyZaznam.idZaznamu}}">Vymazať</a></td>
+    </tbody>
+</table>
+<a th:href="@{'/'}">Zoznam zákazníkov</a><br>
+
+</body>
+</html>
