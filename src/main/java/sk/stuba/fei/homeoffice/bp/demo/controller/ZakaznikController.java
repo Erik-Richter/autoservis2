@@ -58,11 +58,11 @@ public class ZakaznikController{
         return "novyZakaznik";
     }
 
-    /*
+
     @GetMapping("/zmazanieZakaznika/{idenetifikator}")
-    public String deleteByIdenetifikator(@PathVariable Integer idenetifikator, Model model){
-        model.addAttribute("zakaznik", this.zakaznikRepository.deleteByIdenetifikator(idenetifikator));
-        return "index";
+    public String deleteByIdenetifikator(@PathVariable Integer idenetifikator){
+        zakaznikRepository.deleteById(idenetifikator);
+        return "redirect:/";
     }
-    */
+
 }

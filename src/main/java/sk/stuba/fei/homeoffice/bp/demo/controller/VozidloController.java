@@ -56,4 +56,25 @@ public class VozidloController {
         model.addAttribute("vozidlo", this.vozidloRepository.getVozidloByIdVozidla(idVozidla));
         return "noveVozidlo";
     }
+
+
+    @GetMapping("/zoznamVozidiel/odstranenieVozidla/{idVozidla}")
+    public String deleteVozidloById(@PathVariable Integer idVozidla){
+        vozidloRepository.deleteById(idVozidla);
+        return "redirect:/zoznamVozidiel";
+    }
+
+    @GetMapping("/noveVozidlo/zakaznik/{idMajitela}")
+    public String noveVozidloZakaznika(@PathVariable Integer idMajitela, Model model){
+        Vozidlo vozidlo = new Vozidlo();
+        vozidlo.setIdMajitela(idMajitela);
+        model.addAttribute("vozidlo", vozidlo);
+        return "noveVozidlo";
+    }
+
+    @GetMapping("/zoznamVozidiel/zakaznik/{idMajitela}")
+    public String zobrazenieVozidielZakaznika(@PathVariable Integer idMajitela, Model model){
+        model.addAttribute("vozidla", vozidloRepository.findAllByIdMajitela(idMajitela));
+        return "zoznamVozidiel";
+    }
 }
