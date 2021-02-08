@@ -3,23 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>autoservis</title>
+
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
-<style>
-    body{
-        background-color: #2b2b2b;
-        color: snow;
-    }
-    a{
-        text-decoration: none;
-        color: #8bc152;
-    }
-    h1{
-        color: #a2b429;
-    }
-    th{
-        color: #b5772f;
-    }
-</style>
+
 
 <body>
 <h1>Registrácia</h1>
@@ -30,11 +17,11 @@
     <input readonly type="number" id="idVozidla" th:field="*{idVozidla}"/>
     <br>
 
-    <label  for="idMajitela">ID majitela</label>
+    <label  for="idMajitela">ID majiteľa</label>
     <input type="number" id="idMajitela" th:field="*{idMajitela}"/>
     <br>
 
-    <label for="manufacturer">Znacka</label>
+    <label for="manufacturer">Značka</label>
     <input type="text" id="manufacturer" th:field="*{znackaVozidla}"/>
     <br>
 

@@ -1,0 +1,28 @@
+body{
+    background-color: #2b2b2b;
+    color: snow;
+}
+a{
+    text-decoration: none;
+    color: #8bc152;
+}
+h1{
+    color: #a2b429;
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+th{
+    color: #b5772f;
+    border: 1px solid snow;
+    min-width: 25px;
+}
+td{
+    border: 1px solid snow;
+    padding: 2px;
+    min-width: 25px;
+}
