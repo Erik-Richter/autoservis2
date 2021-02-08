@@ -4,23 +4,31 @@
     <meta charset="UTF-8">
     <title>zakaznici</title>
 
-    <link rel="stylesheet" th:href="@{/style.css}">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 
 <body>
+<ul>
+    <li><a th:href="@{'/'}">Zákazníci</a></li>
+    <li><a th:href="@{'/zoznamVozidiel'}">Vozidlá</a></li>
+    <li><a th:href="@{'/zoznamDielov'}">Diely</a></li>
+    <!--li style="float:right"><a class="active" href="#about">About</a></li-->
+</ul>
 <h1>Zoznam vozidiel</h1>
 
-<table>
+<table class="table table-hover table-dark">
     <thead>
     <tr>
         <th class="mdl-data-table__cell--non-numeric">Id</th>
-        <th class="mdl-data-table__cell--non-numeric">Id vozidla</th>
+        <!--th class="mdl-data-table__cell--non-numeric">Id vozidla</th-->
         <th class="mdl-data-table__cell--non-numeric">Názov</th>
         <th class="mdl-data-table__cell--non-numeric">Dátum servisu</th>
         <th class="mdl-data-table__cell--non-numeric">Stav kilometrov</th>
-        <th class="mdl-data-table__cell--non-numeric">Poznámky</th>
-        <th class="mdl-data-table__cell--non-numeric">Detaily</th>
+        <!--th class="mdl-data-table__cell--non-numeric">Poznámky</th>
+        <th class="mdl-data-table__cell--non-numeric">Detaily</th-->
         <th class="mdl-data-table__cell--non-numeric">Úpravy</th>
         <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
     </tr>
@@ -30,12 +38,12 @@
         <!--/*@thymesVar id="idenetifikator" type="aj"*/-->
         <!--/*@thymesVar id="idVozidla" type="java"*/-->
         <td th:text="${servisnyZaznam.idZaznamu}"></td>
-        <td th:text="${servisnyZaznam.idVozidla}"></td>
-        <td th:text="${servisnyZaznam.nazovZaznamu}"></td>
+        <!--td th:text="${servisnyZaznam.idVozidla}"></td-->
+        <td><a class="snow" th:href="@{'/zoznamServisnychZaznamov/detail/' + ${servisnyZaznam.idZaznamu}}" th:text="${servisnyZaznam.nazovZaznamu}"></a></td>
         <td th:text="${servisnyZaznam.datumServisu}"></td>
         <td th:text="${servisnyZaznam.stavKilometrov}"></td>
-        <td th:text="${servisnyZaznam.poznamky}"></td>
-        <td><a th:href="@{'/zoznamServisnychZaznamov/detail/' + ${servisnyZaznam.idZaznamu}}">Zobraziť Detaily</a></td>
+        <!--td th:text="${servisnyZaznam.poznamky}"></td-->
+        <!--td><a th:href="@{'/zoznamServisnychZaznamov/detail/' + ${servisnyZaznam.idZaznamu}}">Zobraziť Detaily</a></td-->
         <td><a th:href="@{'/zoznamServisnychZaznamov/zmenaUdajov/' + ${servisnyZaznam.idZaznamu}}">Zmeniť údaje</a></td>
         <td><a th:href="@{'/zoznamServisnychZaznamov/zmazanie/' + ${servisnyZaznam.idZaznamu}}">Vymazať</a></td>
     </tbody>

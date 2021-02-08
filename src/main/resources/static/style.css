@@ -2,27 +2,54 @@ body{
     background-color: #2b2b2b;
     color: snow;
 }
+
 a{
     text-decoration: none;
     color: #8bc152;
 }
+
+a:hover{
+    color: white;
+}
+
+.snow{
+    color: snow;
+}
+
+.snow:hover{
+    color: #8bc152;
+}
+
 h1{
     color: #a2b429;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+li {
+    float: left;
+}
+
+li a {
     display: block;
-    font-size: 2em;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
-th{
-    color: #b5772f;
-    border: 1px solid snow;
-    min-width: 25px;
+
+li a:hover:not(.active) {
+    background-color: #111;
 }
-td{
-    border: 1px solid snow;
-    padding: 2px;
-    min-width: 25px;
+
+.active {
+    background-color: #4CAF50;
 }
+

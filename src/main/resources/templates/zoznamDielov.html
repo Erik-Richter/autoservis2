@@ -5,14 +5,23 @@
     <title>zakaznici</title>
     <link rel="stylesheet" href="css/style.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
     <link rel="stylesheet" th:href="@{/style.css}">
 
 </head>
 
 <body>
-<h1>Zoznam vozidiel</h1>
+<ul>
+    <li><a th:href="@{'/'}">Zákazníci</a></li>
+    <li><a th:href="@{'/zoznamVozidiel'}">Vozidlá</a></li>
+    <li><a th:href="@{'/zoznamDielov'}">Diely</a></li>
+    <!--li style="float:right"><a class="active" href="#about">About</a></li-->
+</ul>
 
-<table>
+<h1>Zoznam Dielov</h1>
+
+<table class="table table-hover table-dark">
     <thead>
     <tr>
         <th class="mdl-data-table__cell--non-numeric">ID</th>
@@ -21,7 +30,7 @@
         <th class="mdl-data-table__cell--non-numeric">Množstvo</th>
         <th class="mdl-data-table__cell--non-numeric">Číslo produktu</th>
         <th class="mdl-data-table__cell--non-numeric">Typové číslo</th>
-        <th class="mdl-data-table__cell--non-numeric">Detaily</th>
+        <!--th class="mdl-data-table__cell--non-numeric">Detaily</th-->
         <th class="mdl-data-table__cell--non-numeric">Zmeny</th>
         <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
 
@@ -32,13 +41,13 @@
         <!--/*@thymesVar id="idenetifikator" type="aj"*/-->
         <!--/*@thymesVar id="idVozidla" type="java"*/-->
         <td th:text="${diel.idDielu}"></td>
-        <td th:text="${diel.nazov}"></td>
+        <td><a class="snow" th:href="@{'/zoznamDielov/diel/' + ${diel.idDielu}}" th:text="${diel.nazov}"></a></td>
         <td th:text="${diel.vyrobca}"></td>
         <td th:text="${diel.pocet}"></td>
         <td th:text="${diel.cisloProduktu}"></td>
         <td th:text="${diel.typoveCislo}"></td>
 
-        <td><a th:href="@{'/zoznamDielov/diel/' + ${diel.idDielu}}">Zobraziť detaily</a></td>
+        <!--td><a th:href="@{'/zoznamDielov/diel/' + ${diel.idDielu}}">Zobraziť detaily</a></td-->
         <td><a th:href="@{'/zoznamDielov/zmenaUdajov/' + ${diel.idDielu}}">Zmeniť údaje</a></td>
         <td><a th:href="@{'/zoznamDielov/odstranenieDielu/' + ${diel.idDielu}}">Odstrániť diely</a></td>
     </tbody>

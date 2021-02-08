@@ -4,43 +4,30 @@
     <meta charset="UTF-8">
     <title>zakaznici</title>
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
     <link rel="stylesheet" th:href="@{/style.css}">
 
 
 </head>
-<!--style>
-    body{
-        background-color: #2b2b2b;
-        color: snow;
-    }
-    a{
-        text-decoration: none;
-        color: #8bc152;
-    }
-    h1{
-        color: #a2b429;
-    }
-    th{
-        color: #b5772f;
-        border: 1px solid snow;
-        min-width: 25px;
-    }
-    td{
-        border: 1px solid snow;
-        padding: 2px;
-        min-width: 25px;
-    }
-</style-->
+
 <body>
+<ul>
+    <li><a th:href="@{'/'}">Zákazníci</a></li>
+    <li><a th:href="@{'/zoznamVozidiel'}">Vozidlá</a></li>
+    <li><a th:href="@{'/zoznamDielov'}">Diely</a></li>
+    <!--li style="float:right"><a class="active" href="#about">About</a></li-->
+</ul>
 <h1>Zoznam zákazníkov</h1>
 
-<table>
+<table class="table table-hover table-dark">
     <thead>
     <tr>
         <th class="mdl-data-table__cell--non-numeric">Id</th>
         <th class="mdl-data-table__cell--non-numeric">Meno</th>
         <th class="mdl-data-table__cell--non-numeric">Priezvisko</th>
-        <th class="mdl-data-table__cell--non-numeric">Detaily</th>
+        <!--th class="mdl-data-table__cell--non-numeric">Detaily</th-->
         <th class="mdl-data-table__cell--non-numeric">Úpravy</th>
         <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
         <th class="mdl-data-table__cell--non-numeric">Registrácia vozidla</th>
@@ -52,11 +39,11 @@
         <!--/*@thymesVar id="idenetifikator" type="aj"*/-->
         <td th:text="${zakaznik.idenetifikator}"></td>
         <!--/*@thymesVar id="osobneUdaje" type="sk"*/-->
-        <td th:text="${zakaznik.meno}"></td>
+        <td> <a class="snow" th:href="@{'/detail/' + ${zakaznik.idenetifikator}}" th:text="${zakaznik.meno}"></a></td>
         <!--/*@thymesVar id="osobneUdaje" type="sk"*/-->
-        <td th:text="${zakaznik.priezvisko}"></td>
-        <td><a th:href="@{'/detail/' + ${zakaznik.idenetifikator}}">Zobraziť Detaily</a></td>
-        <td><a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}">Upraviť Detaily</a></td>
+        <td> <a class="snow" th:href="@{'/detail/' + ${zakaznik.idenetifikator}}" th:text="${zakaznik.priezvisko}"></a></td>
+        <!--td><a th:href="@{'/detail/' + ${zakaznik.idenetifikator}}">Zobraziť Detaily</a></td-->
+        <td><a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}"><img src="../img/edit1.png" alt="Upraviť Detaily"></a></td>
         <td><a th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}">Odstrániť zákazníka</a></td>
         <td><a th:href="@{'/noveVozidlo/zakaznik/' + ${zakaznik.idenetifikator}}">Nové vozidlo</a></td>
         <td><a th:href="@{'/zoznamVozidiel/zakaznik/' + ${zakaznik.idenetifikator}}">Zobraziť vozidlá</a></td>
