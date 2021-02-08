@@ -16,5 +16,6 @@
 <p th:text="'Rodné Číslo: '+${zakaznik.rodneCislo}"></p>
 <p th:text="'Adresa: '+${zakaznik.getAdresa()}"></p>
 <a th:href="@{'/'}">Návrat na zoznam používateľov</a><br>
+<td><a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}"><img src="../img/edit1.png" alt="Upraviť Detaily"></a></td>
 </body>
 </html>

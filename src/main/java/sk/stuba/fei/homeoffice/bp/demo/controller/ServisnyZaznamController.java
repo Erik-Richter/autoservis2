@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import sk.stuba.fei.homeoffice.bp.demo.data.ServisnyZaznam;
+import sk.stuba.fei.homeoffice.bp.demo.data.Vozidlo;
 import sk.stuba.fei.homeoffice.bp.demo.repository.ServisnyZaznamRepository;
+import sk.stuba.fei.homeoffice.bp.demo.repository.VozidloRepository;
 
 @Controller
 @Component
@@ -17,6 +19,7 @@ import sk.stuba.fei.homeoffice.bp.demo.repository.ServisnyZaznamRepository;
 public class ServisnyZaznamController {
 
     private ServisnyZaznamRepository servisnyZaznamRepository;
+
 
     public ServisnyZaznamController(ServisnyZaznamRepository servisnyZaznamRepository) {
         this.servisnyZaznamRepository = servisnyZaznamRepository;
@@ -59,17 +62,29 @@ public class ServisnyZaznamController {
         return "redirect:/zoznamServisnychZaznamov";
     }
 
-    @GetMapping("/novyServisnyZaznam/vozidlo/{idVozidla}")
+    /*@GetMapping("/novyServisnyZaznam/vozidlo/{idVozidla}")
     public String novyServisnyZaznamVozidla(@PathVariable Integer idVozidla, Model model){
         ServisnyZaznam servisnyZaznam = new ServisnyZaznam();
+        // todo:servisnyZaznam.setIdMajitela = findMajitelaByIdVozidla(Integer idVozidla);
+
+        ServisnyZaznam majitela = servisnyZaznamRepository.getFirstByIdVozidla(idVozidla);
+        int idMajitela = majitela.getIdMajitela();
+        servisnyZaznam.setIdMajitela(idMajitela);
+
         servisnyZaznam.setIdVozidla(idVozidla);
         model.addAttribute("servisnyZaznam", servisnyZaznam);
         return "novyServisnyZaznam";
-    }
+    }*/
 
     @GetMapping("/servisnaKnizka/vozidlo/{idVozidla}")
     public String zobrazenieServisnejKnizky(@PathVariable Integer idVozidla, Model model){
         model.addAttribute("servisneZaznamy", servisnyZaznamRepository.findAllByIdVozidla(idVozidla));
+        return "zoznamServisnychZaznamov";
+    }
+
+    @GetMapping("/zoznamServisnychZaznamov/zakaznik/{idMajitela}")
+    public String zobrazenieVozidielZakaznika(@PathVariable Integer idMajitela, Model model){
+        model.addAttribute("servisneZaznamy", servisnyZaznamRepository.findAllByIdMajitela(idMajitela));
         return "zoznamServisnychZaznamov";
     }
 }

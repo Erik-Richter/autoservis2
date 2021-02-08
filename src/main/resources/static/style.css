@@ -53,3 +53,13 @@ li a:hover:not(.active) {
     background-color: #4CAF50;
 }
 
+.tp{
+    margin: 4px;
+}
+
+th{
+    /*color: #b5772f;*/
+    color: snow;
+    min-width: 25px;
+}
+

@@ -28,4 +28,6 @@ public class ServisnyZaznam {
     private String poznamky;
     @Column(name = "id_vozidla")
     private int idVozidla;
+    @Column(name = "id_majitela")
+    private int idMajitela;
 }

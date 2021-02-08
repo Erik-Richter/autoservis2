@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import sk.stuba.fei.homeoffice.bp.demo.data.ServisnyZaznam;
 import sk.stuba.fei.homeoffice.bp.demo.data.Vozidlo;
 import sk.stuba.fei.homeoffice.bp.demo.repository.VozidloRepository;
 
@@ -74,5 +75,18 @@ public class VozidloController {
     public String zobrazenieVozidielZakaznika(@PathVariable Integer idMajitela, Model model){
         model.addAttribute("vozidla", vozidloRepository.findAllByIdMajitela(idMajitela));
         return "zoznamVozidiel";
+    }
+
+    @GetMapping("/novyServisnyZaznam/vozidlo/{idVozidla}")
+    public String novyServisnyZaznamVozidla(@PathVariable Integer idVozidla, Model model){
+        ServisnyZaznam servisnyZaznam = new ServisnyZaznam();
+        // todo:servisnyZaznam.setIdMajitela = findMajitelaByIdVozidla(Integer idVozidla);
+        Vozidlo majitela = vozidloRepository.getVozidloByIdVozidla(idVozidla);
+        int idMajitela = majitela.getIdMajitela();
+
+        servisnyZaznam.setIdMajitela(idMajitela);
+        servisnyZaznam.setIdVozidla(idVozidla);
+        model.addAttribute("servisnyZaznam", servisnyZaznam);
+        return "novyServisnyZaznam";
     }
 }

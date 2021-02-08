@@ -11,10 +11,10 @@
 <h1>Vaše údaje</h1>
 <p th:text="'ID: '+ ${servisnyZaznam.idZaznamu}"></p>
 <p th:text="'ID: '+ ${servisnyZaznam.idVozidla}"></p>
-<p th:text="'Model: '+${servisnyZaznam.nazovZaznamu}"></p>
-<p th:text="'Značka: '+${servisnyZaznam.datumServisu}"></p>
-<p th:text="'Typ: '+${servisnyZaznam.stavKilometrov}"></p>
-<p th:text="'VIN: '+${servisnyZaznam.poznamky}"></p>
+<p th:text="'Názov: '+${servisnyZaznam.nazovZaznamu}"></p>
+<p th:text="'Dátum: '+${servisnyZaznam.datumServisu}"></p>
+<p th:text="'Stav kilometrov: '+${servisnyZaznam.stavKilometrov}"></p>
+<p th:text="'Poznámky: '+${servisnyZaznam.poznamky}"></p>
 <a th:href="@{'/zoznamVozidiel'}">Návrat na zoznam vozidiel</a></td><br>
 </body>
 </html>

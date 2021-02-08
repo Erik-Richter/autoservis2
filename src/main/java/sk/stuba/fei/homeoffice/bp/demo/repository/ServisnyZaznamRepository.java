@@ -12,5 +12,9 @@ public interface ServisnyZaznamRepository extends JpaRepository<ServisnyZaznam, 
     ServisnyZaznam findServisnyZaznamByIdZaznamu(Integer idZaznamu);
     ServisnyZaznam getServisnyZaznamByIdZaznamu(Integer idZaznamu);
 
+    ServisnyZaznam getFirstByIdVozidla(Integer idVozidla);
+
+
     List<ServisnyZaznam> findAllByIdVozidla(Integer idVozidla);
+    List<ServisnyZaznam> findAllByIdMajitela(Integer idMajitela);
 }

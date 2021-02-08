@@ -32,6 +32,8 @@
         <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
         <th class="mdl-data-table__cell--non-numeric">Registrácia vozidla</th>
         <th class="mdl-data-table__cell--non-numeric">Vozidlá zákazníka</th>
+        <th class="mdl-data-table__cell--non-numeric">Opravy</th>
+
     </tr>
     </thead>
     <tbody>
@@ -47,9 +49,13 @@
         <td><a th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}">Odstrániť zákazníka</a></td>
         <td><a th:href="@{'/noveVozidlo/zakaznik/' + ${zakaznik.idenetifikator}}">Nové vozidlo</a></td>
         <td><a th:href="@{'/zoznamVozidiel/zakaznik/' + ${zakaznik.idenetifikator}}">Zobraziť vozidlá</a></td>
+        <td><a th:href="@{'/zoznamServisnychZaznamov/zakaznik/' + ${zakaznik.idenetifikator}}">Vykonané opravy</a></td>
+
     </tbody>
 </table>
-<a th:href="@{'/novyZakaznik'}">Pridaj</a><br>
-<a th:href="@{'/zoznamVozidiel'}">Zoznam vozidiel</a><br>
+
+<a class="btn btn-primary btn-md" th:href="@{'/novyZakaznik'}">Nový zákazník</a><br>
+<!--a th:href="@{'/zoznamVozidiel'}">Zoznam vozidiel</a><br-->
+
 </body>
 </html>
