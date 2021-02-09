@@ -80,7 +80,6 @@ public class VozidloController {
     @GetMapping("/novyServisnyZaznam/vozidlo/{idVozidla}")
     public String novyServisnyZaznamVozidla(@PathVariable Integer idVozidla, Model model){
         ServisnyZaznam servisnyZaznam = new ServisnyZaznam();
-        // todo:servisnyZaznam.setIdMajitela = findMajitelaByIdVozidla(Integer idVozidla);
         Vozidlo majitela = vozidloRepository.getVozidloByIdVozidla(idVozidla);
         int idMajitela = majitela.getIdMajitela();
 

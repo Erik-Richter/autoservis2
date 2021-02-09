@@ -27,9 +27,9 @@
         <th class="mdl-data-table__cell--non-numeric">Id</th>
         <th class="mdl-data-table__cell--non-numeric">Meno</th>
         <th class="mdl-data-table__cell--non-numeric">Priezvisko</th>
-        <!--th class="mdl-data-table__cell--non-numeric">Detaily</th-->
+        <!--th class="mdl-data-table__cell--non-numeric">Detaily</th>
         <th class="mdl-data-table__cell--non-numeric">Úpravy</th>
-        <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
+        <th class="mdl-data-table__cell--non-numeric">Zmazanie</th-->
         <th class="mdl-data-table__cell--non-numeric">Registrácia vozidla</th>
         <th class="mdl-data-table__cell--non-numeric">Vozidlá zákazníka</th>
         <th class="mdl-data-table__cell--non-numeric">Opravy</th>
@@ -44,9 +44,9 @@
         <td> <a class="snow" th:href="@{'/detail/' + ${zakaznik.idenetifikator}}" th:text="${zakaznik.meno}"></a></td>
         <!--/*@thymesVar id="osobneUdaje" type="sk"*/-->
         <td> <a class="snow" th:href="@{'/detail/' + ${zakaznik.idenetifikator}}" th:text="${zakaznik.priezvisko}"></a></td>
-        <!--td><a th:href="@{'/detail/' + ${zakaznik.idenetifikator}}">Zobraziť Detaily</a></td-->
+        <!--td><a th:href="@{'/detail/' + ${zakaznik.idenetifikator}}">Zobraziť Detaily</a></td>
         <td><a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}"><img src="../img/edit1.png" alt="Upraviť Detaily"></a></td>
-        <td><a th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}">Odstrániť zákazníka</a></td>
+        <td><a th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}">Odstrániť zákazníka</a></td-->
         <td><a th:href="@{'/noveVozidlo/zakaznik/' + ${zakaznik.idenetifikator}}">Nové vozidlo</a></td>
         <td><a th:href="@{'/zoznamVozidiel/zakaznik/' + ${zakaznik.idenetifikator}}">Zobraziť vozidlá</a></td>
         <td><a th:href="@{'/zoznamServisnychZaznamov/zakaznik/' + ${zakaznik.idenetifikator}}">Vykonané opravy</a></td>
