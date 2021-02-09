@@ -11,7 +11,7 @@
 
 <body>
 <ul>
-    <li><a th:href="@{'/'}">Zákazníci</a></li>
+    <li><a th:href="@{'/zoznamZakaznikov'}">Zákazníci</a></li>
     <li><a th:href="@{'/zoznamVozidiel'}">Vozidlá</a></li>
     <li><a th:href="@{'/zoznamDielov'}">Diely</a></li>
     <!--li style="float:right"><a class="active" href="#about">About</a></li-->
@@ -24,9 +24,9 @@
         <th class="mdl-data-table__cell--non-numeric">Id</th>
         <th class="mdl-data-table__cell--non-numeric">Značka</th>
         <th class="mdl-data-table__cell--non-numeric">Model</th>
-        <!--th class="mdl-data-table__cell--non-numeric">Detaily</th-->
+        <!--th class="mdl-data-table__cell--non-numeric">Detaily</th>
         <th class="mdl-data-table__cell--non-numeric">Úpravy</th>
-        <th class="mdl-data-table__cell--non-numeric">Zmazanie</th>
+        <th class="mdl-data-table__cell--non-numeric">Zmazanie</th-->
         <th class="mdl-data-table__cell--non-numeric">Servis</th>
         <th class="mdl-data-table__cell--non-numeric">Servisná knižka</th>
 
@@ -41,9 +41,9 @@
         <td th:text="${vozidlo.idVozidla}"></td>
         <td><a class="snow" th:href="@{'/zoznamVozidiel/detailVozidla/' + ${vozidlo.idVozidla}}" th:text="${vozidlo.znackaVozidla}"></a></td>
         <td><a class="snow" th:href="@{'/zoznamVozidiel/detailVozidla/' + ${vozidlo.idVozidla}}"  th:text="${vozidlo.typVozidla}"></a></td>
-        <!--td><a th:href="@{'/zoznamVozidiel/detailVozidla/' + ${vozidlo.idVozidla}}">Zobraziť Detaily</a></td-->
+        <!--td><a th:href="@{'/zoznamVozidiel/detailVozidla/' + ${vozidlo.idVozidla}}">Zobraziť Detaily</a></td>
         <td><a th:href="@{'/zoznamVozidiel/zmenaUdajovVozidla/' + ${vozidlo.idVozidla}}">Zmeniť Údaje</a></td>
-        <td><a th:href="@{'/zoznamVozidiel/odstranenieVozidla/' + ${vozidlo.idVozidla}}">Odstrániť vozidlo</a></td>
+        <td><a th:href="@{'/zoznamVozidiel/odstranenieVozidla/' + ${vozidlo.idVozidla}}">Odstrániť vozidlo</a></td-->
         <td><a th:href="@{'/novyServisnyZaznam/vozidlo/' + ${vozidlo.idVozidla}}">Nový záznam</a></td>
         <td><a th:href="@{'/servisnaKnizka/vozidlo/' + ${vozidlo.idVozidla}}">Zobraziť servisnú knižku</a></td>
 

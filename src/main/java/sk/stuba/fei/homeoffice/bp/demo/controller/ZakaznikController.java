@@ -26,10 +26,10 @@ public class ZakaznikController{
         this.zakaznikRepository = zakaznikRepository;
     }
 
-    @GetMapping
+    @GetMapping("/zoznamZakaznikov")
     public String vypisVsetkychZakaznikov(Model model){
         model.addAttribute("zakaznici", zakaznikRepository.findAll());
-        return "index";
+        return "zoznamZakaznikov";
     }
 
     @GetMapping("/novyZakaznik")
@@ -62,7 +62,7 @@ public class ZakaznikController{
     @GetMapping("/zmazanieZakaznika/{idenetifikator}")
     public String deleteByIdenetifikator(@PathVariable Integer idenetifikator){
         zakaznikRepository.deleteById(idenetifikator);
-        return "redirect:/";
+        return "redirect:/zoznamZakaznikov";
     }
 
 }

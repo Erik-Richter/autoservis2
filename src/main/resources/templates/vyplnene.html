@@ -17,7 +17,7 @@
 <p th:text="'Email: '+${zakaznik.email}"></p>
 <p th:text="'Rodné Číslo: '+${zakaznik.rodneCislo}"></p>
 <p th:text="'Adresa: '+${zakaznik.getAdresa()}"></p>
-<a th:href="@{'/'}" class="btn btn-primary">Návrat na zoznam používateľov</a>
+<a th:href="@{'/zoznamZakaznikov'}" class="btn btn-primary">Návrat na zoznam používateľov</a>
 <a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}" class="btn btn-warning">Upraviť</a>
 <a th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}" class="btn btn-danger">Odstrániť</a>
 
