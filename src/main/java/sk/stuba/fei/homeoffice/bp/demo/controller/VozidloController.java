@@ -1,6 +1,5 @@
 package sk.stuba.fei.homeoffice.bp.demo.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import sk.stuba.fei.homeoffice.bp.demo.data.ServisnyZaznam;
 import sk.stuba.fei.homeoffice.bp.demo.data.Vozidlo;
 import sk.stuba.fei.homeoffice.bp.demo.repository.VozidloRepository;
+
+import java.util.List;
 
 
 @Controller
@@ -88,4 +89,12 @@ public class VozidloController {
         model.addAttribute("servisnyZaznam", servisnyZaznam);
         return "novyServisnyZaznam";
     }
+
+    /*
+    @GetMapping("/zoznamVozidiel/zmazanieVozidiel/zakaznik/{idenetifikator}")
+    public String vymazanieVozidiel(@PathVariable Integer idMajitela, Model model){
+        //List<Vozidlo> vozidlaMajitela = vozidloRepository.findAllByIdMajitela(idMajitela);
+        //model.addAttribute("vozidla", vozidloRepository.findAllByIdMajitela(idMajitela));
+        return "zoznamVozidiel";
+    }*/
 }

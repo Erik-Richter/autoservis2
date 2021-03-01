@@ -9,17 +9,17 @@
 
 
 <body>
-<h1>Registrácia</h1>
+<h1>Registrácia vozidla</h1>
 <!--/*@thymesVar id="zakaznik" type="bla"*/-->
 <form th:action="@{'/noveVozidlo'}" th:object="${vozidlo}" method="post">
 
-    <label  for="idVozidla">ID vozidla</label>
-    <input readonly type="number" id="idVozidla" th:field="*{idVozidla}"/>
-    <br>
+    <label class="nezobrazeny" for="idVozidla">ID vozidla</label>
+    <input class="nezobrazeny" readonly type="number" id="idVozidla" th:field="*{idVozidla}"/>
 
-    <label  for="idMajitela">ID majiteľa</label>
-    <input type="number" id="idMajitela" th:field="*{idMajitela}"/>
-    <br>
+
+    <label class="nezobrazeny" for="idMajitela">ID majiteľa</label>
+    <input class="nezobrazeny" type="number" id="idMajitela" th:field="*{idMajitela}"/>
+
 
     <label for="manufacturer">Značka</label>
     <input type="text" id="manufacturer" th:field="*{znackaVozidla}"/>

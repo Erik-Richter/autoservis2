@@ -22,5 +22,5 @@ public class DemoApplication {
     public void run(String... args) throws Exception {
         //System.out.println("Hello world");
     }
-
+    // todo: napad: rodne cislo ako id, kontrola podla datumu
 }

@@ -67,3 +67,7 @@ th{
     text-align: center;
 }
 
+.nezobrazeny{
+    display: none;
+}
+

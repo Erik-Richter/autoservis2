@@ -9,14 +9,14 @@
 
 
 <body>
-<h1>Registrácia</h1>
+<h1>Registrácia zákazníka</h1>
 <!--/*@thymesVar id="zakaznik" type="bla"*/-->
 <form th:action="@{'/novyZakaznik'}" th:object="${zakaznik}" method="post">
 
 
 
-    <label for="number">Váš unikátny identifikátor: </label>
-    <input readonly type="number" id="number" th:field="*{idenetifikator}"/>
+    <label class="nezobrazeny" for="number">Váš unikátny identifikátor: </label>
+    <input class="nezobrazeny" readonly type="number" id="number" th:field="*{idenetifikator}"/>
     <br>
 
     <label for="name">Meno*</label>

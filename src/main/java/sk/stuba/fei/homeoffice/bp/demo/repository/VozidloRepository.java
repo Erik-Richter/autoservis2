@@ -10,6 +10,7 @@ import java.util.List;
 public interface VozidloRepository extends JpaRepository<Vozidlo, Integer> {
     Vozidlo findVozidloByIdVozidla(Integer idVozidla);
     Vozidlo getVozidloByIdVozidla(Integer idVozidla);
+    Vozidlo getVozidloByIdMajitela(Integer idenetifikator);
 
     List<Vozidlo> findAllByIdMajitela(Integer idMajitela);
 }

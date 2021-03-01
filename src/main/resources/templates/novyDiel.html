@@ -13,9 +13,9 @@
 <!--/*@thymesVar id="zakaznik" type="bla"*/-->
 <form th:action="@{'/novyDiel'}" th:object="${diel}" method="post">
 
-    <label  for="idDielu">ID dielu</label>
-    <input readonly type="number" id="idDielu" th:field="*{idDielu}"/>
-    <br>
+    <label class="nezobrazeny" for="idDielu">ID dielu</label>
+    <input class="nezobrazeny" readonly type="number" id="idDielu" th:field="*{idDielu}"/>
+
 
     <label  for="nazov">Nazov</label>
     <input type="text" id="nazov" th:field="*{nazov}"/>

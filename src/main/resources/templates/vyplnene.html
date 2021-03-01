@@ -19,7 +19,7 @@
 <p th:text="'Adresa: '+${zakaznik.getAdresa()}"></p>
 <a th:href="@{'/zoznamZakaznikov'}" class="btn btn-primary">Návrat na zoznam používateľov</a>
 <a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}" class="btn btn-warning">Upraviť</a>
-<a th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}" class="btn btn-danger">Odstrániť</a>
+<a onclick="return confirm('Message')" th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}" class="btn btn-danger">Odstrániť</a>
 
 </body>
 </html>
