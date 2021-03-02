@@ -14,9 +14,10 @@ import sk.stuba.fei.homeoffice.bp.demo.data.Zakaznik;
 import sk.stuba.fei.homeoffice.bp.demo.repository.VozidloRepository;
 import sk.stuba.fei.homeoffice.bp.demo.repository.ZakaznikRepository;
 
-import javax.script.Bindings;
+
+
 import javax.validation.Valid;
-import java.sql.SQLDataException;
+
 
 @Controller
 @Component
@@ -30,25 +31,7 @@ public class ZakaznikController{
         this.zakaznikRepository = zakaznikRepository;
     }
 
-    @GetMapping("/zoznamZakaznikov")
-    public String vypisVsetkychZakaznikov(Model model){
-        model.addAttribute("zakaznici", zakaznikRepository.findAll());
-        return "zoznamZakaznikov";
-    }
 
-    @GetMapping("/novyZakaznik")
-    public String registracia(Model model) {
-        Zakaznik zakaznik = new Zakaznik();
-        model.addAttribute("zakaznik", zakaznik);
-        return "novyZakaznik";
-    }
-
-    @PostMapping("/novyZakaznik")
-    public String novyPouzivatel(@ModelAttribute @Valid Zakaznik zakaznik, Model model) {
-
-        this.zakaznikRepository.save(zakaznik);
-        return "vyplnene";
-    }
 
     @GetMapping("/detail/{idenetifikator}")
     public String findZakaznikByIdenetifikator(@PathVariable Integer idenetifikator, Model model){
