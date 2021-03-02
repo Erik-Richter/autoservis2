@@ -33,6 +33,8 @@ public class Zakaznik {
     private String obec;
     private String psc;
 
+    // TODO: telefonneCislo, Datum narodenia, pohlavie
+
     public String getAdresa() {
         String ulica = getUlica();
         String cisloDomu = getCisloDomu();

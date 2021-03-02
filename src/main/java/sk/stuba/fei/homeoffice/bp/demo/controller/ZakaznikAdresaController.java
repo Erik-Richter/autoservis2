@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import sk.stuba.fei.homeoffice.bp.demo.data.Adresa;
 import sk.stuba.fei.homeoffice.bp.demo.data.Zakaznik;
 import sk.stuba.fei.homeoffice.bp.demo.repository.AdresaRepository;
 import sk.stuba.fei.homeoffice.bp.demo.repository.ZakaznikRepository;
@@ -46,8 +47,31 @@ public class ZakaznikAdresaController {
     @PostMapping("/novyZakaznik")
     public String novyPouzivatel(@ModelAttribute @Valid Zakaznik zakaznik, Model model) {
 
-        this.zakaznikRepository.save(zakaznik);
-        return "vyplnene";
+        String zPSC = zakaznik.getPsc().replaceAll("\\s", "");
+        String zObec = zakaznik.getObec();
+        zPSC = kontrolaAdresy(zPSC);
+
+        if(kontrolaAdresy(zObec, zPSC) == 1){       // todo: ?=> Najlepší spôsob overovania/autodoplnania adresy ? (Podla PSC?/ obce)
+            this.zakaznikRepository.save(zakaznik);
+            return "vyplnene";
+        }
+        return "novyZakaznik";
+    }
+
+    public String kontrolaAdresy(String psc){
+        if (psc.length()!=5){
+            throw new IllegalArgumentException("Nespravna dlzka PSC!");
+        }
+        return psc.substring(0,3) + " " + psc.substring(3);
+    }
+
+    public int kontrolaAdresy(String obec, String psc){
+        for (Adresa adresa : adresaRepository.findAllByObec(obec)){
+            if (adresa.getPsc().equals(psc)){
+                return 1;
+            }
+        }
+        return 0;
     }
 
     @GetMapping("/adresy")
