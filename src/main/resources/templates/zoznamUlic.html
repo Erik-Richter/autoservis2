@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>zakaznici</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/style.css}">
+
+</head>
+
+<body>
+<ul>
+    <li><a th:href="@{'/'}">Zákazníci</a></li>
+    <li><a th:href="@{'/zoznamVozidiel'}">Vozidlá</a></li>
+    <li><a th:href="@{'/zoznamDielov'}">Diely</a></li>
+    <!--li style="float:right"><a class="active" href="#about">About</a></li-->
+</ul>
+
+<h1>Zoznam Ulíc</h1>
+
+<table class="table table-hover table-dark">
+    <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">Dulica</th>
+        <th class="mdl-data-table__cell--non-numeric">Ulica</th>
+        <th class="mdl-data-table__cell--non-numeric">PSC</th>
+        <th class="mdl-data-table__cell--non-numeric">DPosta</th>
+        <th class="mdl-data-table__cell--non-numeric">Posta</th>
+        <th class="mdl-data-table__cell--non-numeric">Poznamka</th>
+        <th class="mdl-data-table__cell--non-numeric">Obce</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ulica: ${ulice}">
+        <!--/*@thymesVar id="idenetifikator" type="aj"*/-->
+        <!--/*@thymesVar id="idVozidla" type="java"*/-->
+        <td th:text="${ulica.dulica}"></td>
+        <td th:text="${ulica.ulica}"></td>
+        <td th:text="${ulica.psc}"></td>
+        <td th:text="${ulica.dposta}"></td>
+        <td th:text="${ulica.posta}"></td>
+        <td th:text="${ulica.poznamka}"></td>
+        <td th:text="${ulica.obce}"></td>
+
+
+
+    </tbody>
+</table>
+
+</body>
+</html>

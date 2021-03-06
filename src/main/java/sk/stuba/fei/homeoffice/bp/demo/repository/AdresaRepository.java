@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface AdresaRepository extends JpaRepository<Adresa, Integer> {
 
+    Adresa getAdresaByObec(String obec);
     List<Adresa> findAllByObec(String obec);
 }

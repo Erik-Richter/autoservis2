@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import sk.stuba.fei.homeoffice.bp.demo.data.Adresa;
+import sk.stuba.fei.homeoffice.bp.demo.data.Ulica;
 import sk.stuba.fei.homeoffice.bp.demo.data.Zakaznik;
 import sk.stuba.fei.homeoffice.bp.demo.repository.AdresaRepository;
+import sk.stuba.fei.homeoffice.bp.demo.repository.UlicaRepository;
 import sk.stuba.fei.homeoffice.bp.demo.repository.ZakaznikRepository;
 
 import javax.validation.Valid;
@@ -24,10 +26,13 @@ public class ZakaznikAdresaController {
     private ZakaznikRepository zakaznikRepository;
     @Autowired
     private AdresaRepository adresaRepository;
+    @Autowired
+    private UlicaRepository ulicaRepository;
 
-    public ZakaznikAdresaController(ZakaznikRepository zakaznikRepository, AdresaRepository adresaRepository) {
+    public ZakaznikAdresaController(ZakaznikRepository zakaznikRepository, AdresaRepository adresaRepository, UlicaRepository ulicaRepository) {
         this.zakaznikRepository = zakaznikRepository;
         this.adresaRepository = adresaRepository;
+        this.ulicaRepository = ulicaRepository;
     }
 
     @GetMapping("/zoznamZakaznikov")
@@ -47,7 +52,7 @@ public class ZakaznikAdresaController {
     @PostMapping("/novyZakaznik")
     public String novyPouzivatel(@ModelAttribute @Valid Zakaznik zakaznik, Model model) {
 
-        String zPSC = zakaznik.getPsc().replaceAll("\\s", "");
+        /**String zPSC = zakaznik.getPsc().replaceAll("\\s", "");
         String zObec = zakaznik.getObec();
         zPSC = kontrolaAdresy(zPSC);
 
@@ -55,10 +60,23 @@ public class ZakaznikAdresaController {
             this.zakaznikRepository.save(zakaznik);
             return "vyplnene";
         }
-        return "novyZakaznik";
+        return "novyZakaznik";**/
+
+        String zObec = zakaznik.getObec();
+        Adresa adresa = adresaRepository.getAdresaByObec(zObec);
+        zakaznik.setPsc(adresa.getPsc());
+
+        if (adresa.getPsc() == null){
+            Ulica ulica = ulicaRepository.getUlicaByUlicaAndObce(zakaznik.getUlica(), zObec);
+            zakaznik.setPsc(ulica.getPsc());
+        }
+
+        this.zakaznikRepository.save(zakaznik);
+        return "vyplnene";
+
     }
 
-    public String kontrolaAdresy(String psc){
+    /**public String kontrolaAdresy(String psc){
         if (psc.length()!=5){
             throw new IllegalArgumentException("Nespravna dlzka PSC!");
         }
@@ -72,7 +90,7 @@ public class ZakaznikAdresaController {
             }
         }
         return 0;
-    }
+    }**/
 
     @GetMapping("/adresy")
     public String vypisAdries(Model model) {
