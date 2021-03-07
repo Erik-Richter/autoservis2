@@ -16,6 +16,7 @@ import sk.stuba.fei.homeoffice.bp.demo.repository.UlicaRepository;
 import sk.stuba.fei.homeoffice.bp.demo.repository.ZakaznikRepository;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @Component
@@ -65,6 +66,17 @@ public class ZakaznikAdresaController {
         String zObec = zakaznik.getObec();
         String zUlica = zakaznik.getUlica();
 
+        if(overenieDuplicitnejObce(zObec)>1){
+            String zPSC = zakaznik.getPsc().replaceAll("\\s", "");
+            zPSC = kontrolaAdresy(zPSC);
+
+            if(kontrolaAdresy(zObec, zPSC) == 1){
+                this.zakaznikRepository.save(zakaznik);
+                return "vyplnene";
+            }
+            return "novyZakaznik";
+        }
+
         Adresa adresa = adresaRepository.getAdresaByObec(zObec);
         doplnenieAdresnychUdajovZakaznika(zakaznik, adresa);
 
@@ -101,7 +113,7 @@ public class ZakaznikAdresaController {
         return kraj;
     }
 
-    /**public String kontrolaAdresy(String psc){
+    public String kontrolaAdresy(String psc){
         if (psc.length()!=5){
             throw new IllegalArgumentException("Nespravna dlzka PSC!");
         }
@@ -109,13 +121,19 @@ public class ZakaznikAdresaController {
     }
 
     public int kontrolaAdresy(String obec, String psc){
-        for (Adresa adresa : adresaRepository.findAllByObec(obec)){
+        List<Adresa> adresy = adresaRepository.findAllByObec(obec);
+        for (Adresa adresa : adresy){
             if (adresa.getPsc().equals(psc)){
                 return 1;
             }
         }
         return 0;
-    }**/
+    }
+
+    public int overenieDuplicitnejObce(String obec){
+        List<Adresa> pocetObci = adresaRepository.findAllByObec(obec);
+        return pocetObci.size();
+    }
 
     @GetMapping("/adresy")
     public String vypisAdries(Model model) {
