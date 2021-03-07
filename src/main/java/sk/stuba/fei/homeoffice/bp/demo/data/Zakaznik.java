@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -32,6 +33,14 @@ public class Zakaznik {
     @Column(name = "obec")
     private String obec;
     private String psc;
+    private String okres;
+    private String kraj;
+    @Column(name = "najblizsia_posta")
+    private String najblizsiaPosta;
+    @Column(name = "datum_narodenia")
+    private Date datumNarodenia;
+    @Column(name = "telefonne_cislo")
+    private String telefonneCislo;
 
     // TODO: telefonneCislo, Datum narodenia, pohlavie
 
@@ -40,7 +49,9 @@ public class Zakaznik {
         String cisloDomu = getCisloDomu();
         String obec = getObec();
         String psc = getPsc();
+        String okres = getOkres();
+        String kraj = getKraj();
 
-        return ulica + " " + cisloDomu + ", " + obec + " " + psc;
+        return ulica + " " + cisloDomu + ", " + obec + " " + psc + ", okres " + okres + ", " + kraj;
     }
 }

@@ -63,17 +63,42 @@ public class ZakaznikAdresaController {
         return "novyZakaznik";**/
 
         String zObec = zakaznik.getObec();
+        String zUlica = zakaznik.getUlica();
+
         Adresa adresa = adresaRepository.getAdresaByObec(zObec);
-        zakaznik.setPsc(adresa.getPsc());
+        doplnenieAdresnychUdajovZakaznika(zakaznik, adresa);
 
         if (adresa.getPsc() == null){
-            Ulica ulica = ulicaRepository.getUlicaByUlicaAndObce(zakaznik.getUlica(), zObec);
+            Ulica ulica = ulicaRepository.getUlicaByUlicaAndObce(zUlica, zObec);
             zakaznik.setPsc(ulica.getPsc());
+            zakaznik.setNajblizsiaPosta(ulica.getDposta());
         }
 
         this.zakaznikRepository.save(zakaznik);
         return "vyplnene";
+    }
 
+    public void doplnenieAdresnychUdajovZakaznika(Zakaznik zakaznik, Adresa adresa){
+
+        zakaznik.setPsc(adresa.getPsc()); // TODO: Ak existuje viac rovnakych obci, vyzvat zakaznika aby vyplnil psc, potom skontrolovat
+        zakaznik.setOkres(adresa.getOkres());
+        zakaznik.setKraj(transformaciaKrajov(adresa.getKraj()));
+        zakaznik.setNajblizsiaPosta(adresa.getDposta());
+    }
+
+    public String transformaciaKrajov(String kraj){
+        switch (kraj){
+            case "BL": kraj = "Bratislavský kraj"; break;
+            case "TA": kraj = "Trnavský kraj"; break;
+            case "TC": kraj = "Trenčiansky kraj"; break;
+            case "NI": kraj = "Nitriansky kraj"; break;
+            case "ZI": kraj = "Žilinský kraj"; break;
+            case "BC": kraj = "Banskobystrický kraj"; break;
+            case "PV": kraj = "Prešovský kraj"; break;
+            case "KI": kraj = "Košický kraj"; break;
+            default: return null;
+        }
+        return kraj;
     }
 
     /**public String kontrolaAdresy(String psc){

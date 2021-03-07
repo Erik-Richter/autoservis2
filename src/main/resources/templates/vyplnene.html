@@ -11,15 +11,44 @@
 
 <body>
 <h1>Vaše údaje</h1>
-<p th:text="'ID: '+ ${zakaznik.idenetifikator}"></p>
-<p th:text="'Meno: '+${zakaznik.meno}"></p>
-<p th:text="'Priezvisko: '+${zakaznik.priezvisko}"></p>
-<p th:text="'Email: '+${zakaznik.email}"></p>
-<p th:text="'Rodné Číslo: '+${zakaznik.rodneCislo}"></p>
-<p th:text="'Adresa: '+${zakaznik.getAdresa()}"></p>
-<a th:href="@{'/zoznamZakaznikov'}" class="btn btn-primary">Návrat na zoznam používateľov</a>
-<a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}" class="btn btn-warning">Upraviť</a>
-<a onclick="return confirm('Message')" th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}" class="btn btn-danger">Odstrániť</a>
+<main class="container">
+    <div class="row">
+        <fieldset class="col-lg-6">
+            <legend>Osobné údaje</legend>
+            <div class="row">
+                <p class="col-6" th:text="'Identifikačné číslo v systéme:'"></p><p class="col-6" th:text="${zakaznik.idenetifikator}"></p>
+                <p class="col-6" th:text="'Meno: '"></p><p th:text="${zakaznik.meno}" class="col-6"></p>
+                <p class="col-6" th:text="'Priezvisko: '"></p><p class="col-6" th:text="${zakaznik.priezvisko}"></p>
+                <p class="col-6" th:text="'Rodné Číslo: '"></p><p class="col-6" th:text="${zakaznik.rodneCislo}"></p>
+                <p class="col-6" th:text="'Dátum narodenia: '"></p><p class="col-6" th:text="${zakaznik.getDatumNarodenia()}"></p>
+            </div>
+        </fieldset>
+        <fieldset class="col-lg-6">
+            <legend>Kontaktné údaje</legend>
+            <div class="row">
+                <p class="col-6" th:text="'Email: '"></p><p class="col-6" th:text="${zakaznik.email}"></p>
+                <p class="col-6" th:text="'Telefónne číslo: '"></p><p class="col-6" th:text="${zakaznik.getTelefonneCislo()}"></p>
+            </div>
+        </fieldset>
+        <fieldset class="col-lg-12">
+            <legend>Adresné údaje</legend>
+            <div class="row">
+                <p th:text="'Adresa: '" class="col-3"></p><p class="col-9"  th:text="${zakaznik.getAdresa()}"></p>
+                <p th:text="'Najbližšia pošta: '" class="col-3"></p><p class="col-9" th:text="${zakaznik.getNajblizsiaPosta()}"></p>
+            </div>
+        </fieldset>
+    </div>
+
+
+
+
+
+
+    <a th:href="@{'/zoznamZakaznikov'}" class="btn btn-primary">Návrat na zoznam používateľov</a>
+    <a th:href="@{'/zmenaUdajov/' + ${zakaznik.idenetifikator}}" class="btn btn-warning">Upraviť</a>
+    <a onclick="return confirm('Message')" th:href="@{'/zmazanieZakaznika/' + ${zakaznik.idenetifikator}}" class="btn btn-danger">Odstrániť</a>
+
+</main>
 
 </body>
 </html>
